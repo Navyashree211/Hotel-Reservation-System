@@ -1,6 +1,4 @@
-/*
- *UC4:- TO Find the cheapest Hotel for a given Date Range based on weekday and weekend.
- *       i/p--> 11sep2020, 12sep2020.
+/*UC5:- TO Add ratings to each Hotel .
  * 
  * @author: Navya shree
  * @since : 26-10-2021
