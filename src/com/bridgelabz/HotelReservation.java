@@ -1,6 +1,6 @@
 /*
- *UC2:- To Find the cheapest Hotel for a given date range
- *       i/p-->10sep2020,11sep2020.
+ *UC4:- TO Find the cheapest Hotel for a given Date Range based on weekday and weekend.
+ *       i/p--> 11sep2020, 12sep2020.
  * 
  * @author: Navya shree
  * @since : 26-10-2021
@@ -22,6 +22,11 @@ public class HotelReservation {
 		System.out.println("*Cheapest Hotel Based on WeekdayRegularRate");
 		hotel.findCheapestHotelOne("10-Sep-2020", "11-Sep-2020");
 		System.out.println(" ");
+		
+		  System.out.println(" ");
+	        System.out.println("*Cheapest Hotel Based on WeekendRegularRate");
+	        hotel.findCheapestHotelTwo("10-Sep-2020","11-Sep-2020");
+	        System.out.println(" ");
 
 	}
 
