@@ -1,5 +1,6 @@
 /*
- *UC4:- TO Add ratings to each Hotel .
+ *UC6:- Ability to find the cheapest best rated hotel for a given Date Range
+ * i/p:- 11Sep2020, 12Sep2020.
  * 
  * @author: Navya shree
  * @since : 26-10-2021
@@ -56,22 +57,47 @@ public class HotelReservationSystem {
 		System.out.println("NumberOfDaysStayed * WeekdayRegularRate :" + hotel.getTotal() + "$");
 
 	}
-	//Find CheapestHotel based on WeekendRegularRate
-	 public void findCheapestHotelTwo(String startDateRange, String endDateRange) {                                       
 
-	        LocalDate startDate = LocalDate.parse(startDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));   
-	        LocalDate endDate = LocalDate.parse(endDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));
+	// Find CheapestHotel based on WeekendRegularRate
+	public void findCheapestHotelTwo(String startDateRange, String endDateRange) {
 
-	        int numberOfDays = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;                           
+		LocalDate startDate = LocalDate.parse(startDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));
+		LocalDate endDate = LocalDate.parse(endDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));
 
-	        Optional<Hotel> cheapestHotel = this.myHotelList.stream().sorted(Comparator.comparing(Hotel::getWeekendRegularRate)).findFirst();  
+		int numberOfDays = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;
 
-	        Hotel hotel = new Hotel();                                                                                  
-	        hotel.setHotelName(cheapestHotel.get().getHotelName());
-	        hotel.setTotal(cheapestHotel.get().getWeekendRegularRate() * numberOfDays);                         
+		Optional<Hotel> cheapestHotel = this.myHotelList.stream()
+				.sorted(Comparator.comparing(Hotel::getWeekendRegularRate)).findFirst();
 
-	        System.out.println("-HotelName :" + hotel.getHotelName());                                        
-	        System.out.println("-NumberOfDaysStayed * WeekendRegularRate :" + hotel.getTotal() + "$");
+		Hotel hotel = new Hotel();
+		hotel.setHotelName(cheapestHotel.get().getHotelName());
+		hotel.setTotal(cheapestHotel.get().getWeekendRegularRate() * numberOfDays);
 
-	    }
+		System.out.println("-HotelName :" + hotel.getHotelName());
+		System.out.println("-NumberOfDaysStayed * WeekendRegularRate :" + hotel.getTotal() + "$");
+
+	}
+
+	// Rating
+	public void findCheapestHotelRaitingForRegular(String startDateRange, String endDateRange) {
+
+		LocalDate startDate = LocalDate.parse(startDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));
+		LocalDate endDate = LocalDate.parse(endDateRange, DateTimeFormatter.ofPattern("d-MMM-yyyy"));
+
+		int numberOfDays = endDate.getDayOfMonth() - startDate.getDayOfMonth() + 1;
+
+		Optional<Hotel> cheapestHotel = this.myHotelList.stream()
+				.sorted(Comparator.comparing(Hotel::getWeekendRegularRate)).findFirst();
+
+		Hotel hotel = new Hotel();
+		hotel.setHotelName(cheapestHotel.get().getHotelName());
+		hotel.setTotal(cheapestHotel.get().getWeekendRegularRate() * numberOfDays);
+		hotel.setRating(cheapestHotel.get().getRating());
+
+		System.out.println("-HotelName :" + hotel.getHotelName());
+		System.out.println("-NumberOfDaysStayed * WeekendRegularRate :" + hotel.getTotal() + "$");
+		System.out.println("-Rating :" + hotel.getRating());
+
+	}
+
 }
